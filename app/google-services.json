@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "594025532324",
+    "project_id": "aaua-assistance"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:594025532324:android:c75fc2b90835b917",
+        "android_client_info": {
+          "package_name": "com.aauaforum.aauaassistance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "594025532324-s91rre0bah93hcf4db15hf8lvf23s6s8.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "594025532324-bhrpe310eeusibtnquak1bhvh0321mm8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aauaforum.aauaassistance",
+            "certificate_hash": "bf7087dbea052344cf905fcae6a3883e5e73b5d3"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxOYiT5hncT4SbWoifdvtbkUcb-LA7-Wg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

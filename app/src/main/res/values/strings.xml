@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">AAUA Assistance</string>
+
+    <string name="chatBot">ChatBot</string>
+    <string name="complains">Complains</string>
+    <string name="answer">Answer</string>
+
+    <string name="loading">Please Wait</string>
+    <string name="signin_notify">Enable Internet Connections and Sign in via your Google account</string>
+
+    <string name="app_sub_name">assistance</string>
+    <string name="app_main_name">aaua</string>
+    <string name="version_name">Version</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
