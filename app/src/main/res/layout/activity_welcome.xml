@@ -1,67 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:padding="@dimen/activity_vertical_margin"
-    tools:context="com.aauaforum.aauaassistance.activity.WelcomeActivity">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/welcome_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/aa_logo"
+                android:padding="@dimen/activity_horizontal_margin"
+                tools:context="com.aauaforum.aauaassistance.activity.WelcomeActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:id="@+id/main_linear_layout">
-
-        <ImageView
-            android:id="@+id/aa_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="250dp"
-            android:src="@drawable/aa_logo_white"
-            tools:ignore="ContentDescription" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/app_main_name"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/app_normal_text_size"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:text="@string/app_sub_name"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/app_normal_text_size" />
-
-        </LinearLayout>
-    </LinearLayout>
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/btn_sign_in"
-        android:layout_marginTop="@dimen/medium_bottom_margin"
-        android:layout_below="@id/main_linear_layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/medium_bottom_margin"/>
 
     <TextView
         android:id="@+id/version_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/darker_gray"
+        android:text="@string/version_name"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"/>
+        android:textColor="@android:color/darker_gray"/>
 </RelativeLayout>

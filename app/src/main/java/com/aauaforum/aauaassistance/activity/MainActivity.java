@@ -2,6 +2,8 @@ package com.aauaforum.aauaassistance.activity;
 
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.aauaforum.aauaassistance.Constant;
@@ -29,7 +32,7 @@ import butterknife.ButterKnife;
 import io.realm.Realm;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
 
     @BindView(R.id.toolbar)
@@ -125,6 +128,11 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new QuestionFragment(), "Complains");
         adapter.addFragment(new AnswerFragment(), "Answer");
         viewPager.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
     }
 
     private class ViewPagerAdapter extends FragmentPagerAdapter {

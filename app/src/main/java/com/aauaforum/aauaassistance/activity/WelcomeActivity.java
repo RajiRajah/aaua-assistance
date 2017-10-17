@@ -8,7 +8,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +28,8 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 
+import java.util.Random;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Realm;
@@ -38,6 +42,8 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     SignInButton btnSignIn;
     @BindView(R.id.version_info)
     TextView versionInfo;
+    @BindView(R.id.welcome_layout)
+    RelativeLayout welcomeLayout;
 
     private User user;
     private Realm realm;
@@ -52,6 +58,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_welcome);
         ButterKnife.bind(this);
 
+        welcomeScreen();
 //        initializing Realm
         realm = Realm.getDefaultInstance();
         realmHelper = new RealmHelper(realm);
@@ -75,6 +82,24 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         btnSignIn.setSize(SignInButton.SIZE_STANDARD);
         btnSignIn.setScopes(gso.getScopeArray());
         updateAppVersionInfo();
+    }
+
+    private void welcomeScreen() {
+        Random randNum = new Random();
+        int switchValue = randNum.nextInt(3) + 1;
+
+        switch (switchValue){
+            case 1:
+                break;
+            case 2:
+                welcomeLayout.setBackground(getResources().getDrawable(R.drawable.aa_logo_1));
+                versionInfo.setTextColor(getResources().getColor(R.color.lightColorPrimary));
+                break;
+            case 3:
+                welcomeLayout.setBackground(getResources().getDrawable(R.drawable.aa_logo_2));
+//                versionInfo.setTextColor(getResources().getColor(R.color.whiteColorPrimary));
+                break;
+        }
     }
 
 
@@ -118,11 +143,11 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
             user.setEmail(acct.getEmail());
             user.setProfile_pic(acct.getPhotoUrl().toString());
 
-            if (!realmHelper.getUserEmailExist(acct.getEmail())){
-                if (realmHelper.saveUser(user)){
+            if (!realmHelper.getUserEmailExist(acct.getEmail())) {
+                if (realmHelper.saveUser(user)) {
                     updateUI(true);
                 }
-            }else {
+            } else {
                 updateUI(true);
             }
 
@@ -174,14 +199,16 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void updateUI(boolean isSignIn) {
-        if (isSignIn){
+        if (isSignIn) {
             Log.e(TAG, "realmResult: " + user.getId());
 
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra(Constant.USER_ID, user.getId());
             startActivity(intent);
-        }else {
-            Toast.makeText(getApplicationContext(),getString(R.string.signin_notify),Toast.LENGTH_SHORT).show();
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.signin_notify), Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 50);
+            toast.show();
         }
 
     }
@@ -189,7 +216,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
     private void updateAppVersionInfo() {
         try {
             PackageInfo pInfo = this.getPackageManager().getPackageInfo(getPackageName(), 0);
-            versionInfo.setText(getString(R.string.version_name) +" "+ pInfo.versionName);
+            versionInfo.setText(getString(R.string.version_name) + " " + pInfo.versionName);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
